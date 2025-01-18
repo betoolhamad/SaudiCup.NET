@@ -1,0 +1,95 @@
+@model Stadiums
+@{
+    
+    Layout="/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<div class="container">
+    <div class="row mt-5">
+
+        <div class="col">
+            <div class="card mt-5">
+                <div class="card-body">
+                    <form asp-action="UpdateStadium" method="POST">
+                        <div class="row">
+                            <input type="hidden" asp-for="Id" class="form-control">
+
+                            <div class="col">
+                                <label class="form-lable">اسم الملعب</label>
+                                <input type="text" asp-for="Name" class="form-control">
+                            </div>
+
+                            <div class="col">
+                                <label class="form-lable">سعة الملعب</label>
+                                <input type="text" asp-for="Capacity" class="form-control">
+                            </div>
+                        </div>
+                        <div class="row">
+                             <div class="col">
+                                <label class="form-lable">المدينة </label>
+                                <input type="text" asp-for="City" class="form-control">
+                            </div>
+
+                            <div class="col">
+                                <label class="form-lable">النوع</label>
+                                <input type="text" asp-for="Type" class="form-control">
+                            </div>
+                        </div>
+
+                        <div class="row">
+
+                             <div class="col">
+                                <label class="form-lable">المالك</label>
+                                <input type="text" asp-for="Owner" class="form-control">
+                            </div>
+
+                             <div class="col">
+                                <label class="form-lable">العرض</label>
+                                <input type="text" asp-for="width" class="form-control">
+                            </div>
+
+                        </div>
+
+                        <div class="row">
+                            <div class="col">
+                                <label class="form-lable">الصورة</label>
+                                <input type="text" asp-for="Images" class="form-control">
+                            </div>
+
+                             <div class="col">
+                                <label class="form-lable">الوصف</label>
+                                <input type="text" asp-for="Desc" class="form-control">
+                            </div>
+                        </div>
+
+                          <div class="row"> 
+                            
+                             <div class="col">
+                                <label class="form-lable">تاريخ الإنشاء</label>
+                                <input type="text" asp-for="ConstractionDate" class="form-control">
+                            </div>
+
+                             <div class="col">
+                                <label class="form-lable">تفاصيل </label>
+                                <input type="text" asp-for="Facility" class="form-control">
+                            </div>
+                        </div>
+
+
+                            <div class="row mt-5">
+                                <div class="col text-center">
+                                    <button type="submit" class="btn-hover color-1">حفظ</button>
+                                </div>
+                            </div>
+
+                    </form>
+                </div>
+
+
+            </div>
+        </div>
+
+
+
+    </div>
+</div>

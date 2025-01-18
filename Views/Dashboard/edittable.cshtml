@@ -1,0 +1,65 @@
+@model FootballTabels
+
+@{
+    
+    Layout="/Views/Shared/_LayoutAdmin.cshtml";
+    var getdata = ViewBag.getdata;
+}
+
+<div class="container">
+    <div class="row mt-5">
+
+        <div class="col">
+            <div class="card mt-5">
+                <div class="card-body">
+                    <form asp-action="Updatetable" method="POST">
+                        <div class="row">
+                            <input type="hidden" asp-for="Id" class="form-control">
+                            <div class="col">
+                                 <label class="form-lable">اسم الملعب</label>
+                                 <select class="form-select" asp-for="Stadiums_Id">
+                                    <option>اختر الملعب</option>
+
+                                    @foreach (var item in getdata){
+
+                                    <option value="@item.Id">@item.Name</option>
+                                    
+                                    }
+                                </select> 
+                            </div>
+
+                            <div class="col">
+                                 <label class="form-lable">الفريق الاول </label>
+                                <input type="text" asp-for="Ateam1" class="form-control">
+                            </div>
+                        </div>
+                        <div class="row">
+                             <div class="col">
+                                <label class="form-lable">الفريق الثاني</label>
+                                <input type="text" asp-for="Ateam2" class="form-control">
+                            </div>
+
+                            <div class="col">
+                                 <label class="form-lable">تاريخ المباراة</label>
+                                <input type="text" asp-for="MatchTime" class="form-control">
+                            </div>
+                        </div>
+
+
+                            <div class="row mt-5">
+                                <div class="col text-center">
+                                    <button type="submit" class="btn-hover color-1">حفظ</button>
+                                </div>
+                            </div>
+
+                    </form>
+                </div>
+
+
+            </div>
+        </div>
+
+
+
+    </div>
+</div>

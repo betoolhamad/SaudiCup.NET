@@ -1,0 +1,53 @@
+<div class="container">
+
+     <div class="row mt-5">
+
+        <div class="col">
+
+            <div class="card">
+                <div class="card-body">
+                    <table class="table ">
+                        <thead>
+                            <tt>
+                                 <td class=text-center>رقم فئة النقل</td>
+
+                                <td class=text-center>اسم فئة النقل</td>
+                            <td class="text-center" colspan="2">الإجراء</td>                
+                            </tt>
+
+                        </thead>
+
+                        <tbody>
+                            @foreach (var items in Model) {
+                                <tr>
+                                    <td>
+                                    @items.Id 
+                                    </td>
+
+                                     <td>
+                                    @items.Name 
+                                    </td>
+
+                                    <td>
+                                        <a href="#" onclick="showmessage(@items.Id)">
+                                            <i class="fa fa-trash text-danger" aria-hidden="true"></i> 
+                                        </a>
+                                      
+                                    </td>
+                                    <td>
+                                        <a asp-action="EditCategories" asp-route-id="@items.Id"><i class="fa fa-pencil text-success" aria-hidden="true"></i></a>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                       
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+</div>

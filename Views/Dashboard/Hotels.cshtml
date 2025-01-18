@@ -1,0 +1,139 @@
+ @model IEnumerable<Hotels> //هذه البيانات يتم استقبالها من الكلاس 
+
+
+@{
+    
+    Layout="/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+
+<div class="container">
+    <div class="row mt-5">
+
+        <div class="col">
+            <div class="card mt-5">
+                <div class="card-body">
+                    <form asp-action="CreateNewHotels" method="POST" enctype="multipart/form-data">
+                        <div class="row">
+                            <div class="col">
+                                <label class="form-lable">اسم الفندق</label>
+                                <input type="text" name="Name" class="form-control">
+                            </div>
+
+                            <div class="col">
+                                <label class="form-lable">وصف الفندق</label>
+                                <input type="text" name="Description" class="form-control">
+                            </div>
+
+
+                            <div class="row">
+                                <div class="col">
+                                    <label class="form-lable"> صورة فندق </label>
+                                    <input type="file" name="photo" class="form-control">
+                                </div>
+
+                                <div class="col">
+                                    <label class="form-lable">موقع الفندق </label>
+                                    <input type="text" name="Location" class="form-control">
+                                </div>
+
+                            <div class="row">
+
+                                    <div class="col">
+                                        <label class="form-lable">المدينة</label>
+                                        <input type="text" name="City" class="form-control">
+                                    </div>
+
+                                    <div class="col">
+                                            <label class="form-lable">السعر</label>
+                                            <input type="text" name="Price" class="form-control">
+                                    </div>
+                                </div>
+                                
+                            </div>
+
+                              <div class="row">
+
+                                    <div class="col">
+                                        <label class="form-lable">تفاصيل اخرى</label>
+                                        <input type="text" name="Facility" class="form-control">
+                                    </div>
+
+                         
+
+                            <div class="row mt-5">
+                                <div class="col text-center">
+                                    <button type="submit" class="btn-hover color-1">حفظ</button>
+                                </div>
+                            </div>
+
+                        </div>
+                    </form>
+                </div>
+
+
+            </div>
+        </div>
+
+
+
+    </div>
+
+
+    <div class="row mt-5">
+
+        <div class="col">
+
+            <div class="card">
+                <div class="card-body">
+                    <table class="table text-center">
+                        <thead>
+                            <tt>
+                                <td class=text-center>رقم الفندق</td>
+                                <td class=text-center>اسم الفندق</td>
+                                <td class=text-center>وصف الفندق</td>
+                                <td class=text-center>موقع الفندق</td>
+                                <td class=text-center>الصورة</td>
+                                <td class=text-center>المدينة</td>
+
+                
+                            </tt>
+
+                        </thead>
+
+                        <tbody>
+                            @foreach (var items in Model) {
+                                <tr>
+                                    <td>
+                                    @items.Id 
+                                    </td>
+                                    <td>
+                                    @items.Name  
+                                    </td>
+                                    <td>
+                                    @items.Description 
+                                    </td>
+                                    <td>
+                                    @items.Location  
+                                    </td>
+                                    <td>
+                                    <img src="/Images/@items.Images" width="60" height="60" class="rounded rounded-circle">  
+                                    </td>
+                                     <td>
+                                    @items.City  
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                       
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+
+</div>

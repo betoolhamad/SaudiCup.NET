@@ -1,0 +1,143 @@
+@model IEnumerable<Cup.Models.FootballViewModel>
+@* @model IEnumerable<FootballTabels> *@
+
+@{
+    
+    Layout="/Views/Shared/_LayoutAdmin.cshtml";
+    var getdata = ViewBag.getdata2;
+    @* var footballTabels=ViewBag.footballTabel; *@
+
+}
+
+
+<div class="container">
+    <div class="row mt-5">
+
+        <div class="col">
+            <div class="card mt-5">
+                <div class="card-body">
+                    <form asp-action="CreateNewTableFootball" method="POST">
+                        <div class="row">
+
+                            <input type="hidden" name="Id" class="form-control">
+
+                            <div class="col">
+                                <label class="form-lable">اسم الملعب</label>
+                                <select class="form-select" name="Stadiums_Id">
+                                    <option>اختر الملعب</option>
+
+                                    @foreach (var item in getdata){
+
+                                    <option value="@item.Id">@item.Name</option>
+                                    
+                                    }
+                                </select>                            
+                          </div>
+
+                        <div class="row">
+                
+
+                             <div class="col">
+                                <label class="form-lable">الفريق الاول </label>
+                                <input type="text" name="Ateam1" class="form-control">
+                            </div>
+
+                            <div class="col">
+                                <label class="form-lable">الفريق الثاني</label>
+                                <input type="text" name="Ateam2" class="form-control">
+                            </div>
+                        </div>
+
+                        <div class="row">
+
+                             <div class="col">
+                                <label class="form-lable">تاريخ المباراة</label>
+                                <input type="text" name="MatchTime" class="form-control">
+                            </div>
+
+                        </div>
+
+                    
+
+                            <div class="row mt-5">
+                                <div class="col text-center">
+                                    <button type="submit" class="btn-hover color-1">حفظ</button>
+                                </div>
+                            </div>
+
+                    </form>
+                </div>
+
+
+            </div>
+        </div>
+
+
+
+    </div>
+
+    <div class="row mt-5">
+
+        <div class="col">
+
+            <div class="card">
+                <div class="card-body">
+                    <table class="table text-center">
+                        <thead>
+                            <tt>
+                                <td class=text-center>الرقم</td>
+                                <td class=text-center>اسم الملعب</td>
+                                <td class=text-center>االفريق الاول</td>
+                                <td class=text-center>الفريق الثاني</td>
+                                <td class=text-center> وقت المباراة</td>
+                                <td class=text-center>الإجراء </td>
+
+                            </tt>
+
+                        </thead>
+
+                        <tbody>
+                            @foreach (var items in Model) {
+                                <tr>
+                                    <td>
+                                    @items.Id 
+                                    </td>
+                                    <td>
+                                    @items.NameStadium  
+                                    </td>
+                                    <td>
+                                    @items.Team1 
+                                    </td>
+                                    <td>
+                                    @items.Team2  
+                                    </td>
+                                    <td>
+                                    @items.MatchTime  
+                                    </td>
+
+                                    <td>
+                                        <a asp-action="Deletetable" asp-route-id="@items.Id">
+                                            <i class="fa fa-trash text-danger" aria-hidden="true"></i>
+                                        </a>
+                                    
+                                    </td>
+
+                                    <td>
+                                        <a asp-action="Edittable" asp-route-id="@items.Id">
+                                            <i class="fa fa-pencil text-success" aria-hidden="true"></i>
+                                        </a>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                       
+
+                    </table>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+</div>

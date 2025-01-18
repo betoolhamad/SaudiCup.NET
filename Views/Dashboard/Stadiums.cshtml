@@ -1,0 +1,190 @@
+@model IEnumerable<Stadiums>
+@{
+    
+    Layout="/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+
+<div class="container">
+    <div class="row mt-5">
+
+        <div class="col">
+            <div class="card mt-5">
+                <div class="card-body">
+                    <form asp-action="CreateNewStadiums" method="POST">
+                        <div class="row">
+                            <div class="col">
+                                <label class="form-lable">اسم الملعب</label>
+                                <input type="text" name="Name" class="form-control">
+                            </div>
+
+                            <div class="col">
+                                <label class="form-lable">سعة الملعب</label>
+                                <input type="text" name="Capacity" class="form-control">
+                            </div>
+                        </div>
+                        <div class="row">
+                             <div class="col">
+                                <label class="form-lable">المدينة </label>
+                                <input type="text" name="City" class="form-control">
+                            </div>
+
+                            <div class="col">
+                                <label class="form-lable">النوع</label>
+                                <input type="text" name="Type" class="form-control">
+                            </div>
+                        </div>
+
+                        <div class="row">
+
+                             <div class="col">
+                                <label class="form-lable">المالك</label>
+                                <input type="text" name="Owner" class="form-control">
+                            </div>
+
+                             <div class="col">
+                                <label class="form-lable">العرض</label>
+                                <input type="text" name="width" class="form-control">
+                            </div>
+
+                        </div>
+
+                        <div class="row">
+                            <div class="col">
+                                <label class="form-lable">الصورة</label>
+                                <input type="text" name="Images" class="form-control">
+                            </div>
+
+                             <div class="col">
+                                <label class="form-lable">الوصف</label>
+                                <input type="text" name="Desc" class="form-control">
+                            </div>
+                        </div>
+
+                          <div class="row"> 
+                            
+                             <div class="col">
+                                <label class="form-lable">تاريخ الإنشاء</label>
+                                <input type="text" name="ConstractionDate" class="form-control">
+                            </div>
+
+                             <div class="col">
+                                <label class="form-lable">تفاصيل </label>
+                                <input type="text" name="Facility" class="form-control">
+                            </div>
+                        </div>
+
+
+                            <div class="row mt-5">
+                                <div class="col text-center">
+                                    <button type="submit" class="btn-hover color-1">حفظ</button>
+                                </div>
+                            </div>
+
+                    </form>
+                </div>
+
+
+            </div>
+        </div>
+
+
+
+    </div>
+
+    <div class="row mt-5">
+
+        <div class="col">
+
+            <div class="card">
+                <div class="card-body">
+                    <table class="table text-center">
+                        <thead>
+                            <tt>
+                                <td class=text-center>رقم الملعب</td>
+                                <td class=text-center>اسم الملعب</td>
+                                <td class=text-center>سعة الملعب</td>
+                                <td class=text-center>المدينة</td>
+                                <td class=text-center> النوع</td>
+                                <td class=text-center>المالك</td>
+                                <td class=text-center>العرض</td>
+                                <td class=text-center>الصورة</td>
+                                <td class=text-center>الوصف</td>
+                                <td class=text-center>تاريخ الإنشاء</td>
+                                <td class=text-center>تفاصيل </td>
+                                <td class=text-center>الإجراء </td>
+
+
+
+                                
+
+                
+                            </tt>
+
+                        </thead>
+
+                        <tbody>
+                            @foreach (var items in Model) {
+                                <tr>
+                                    <td>
+                                    @items.Id 
+                                    </td>
+                                    <td>
+                                    @items.Name  
+                                    </td>
+                                    <td>
+                                    @items.Capacity 
+                                    </td>
+                                    <td>
+                                    @items.City  
+                                    </td>
+                                     <td>
+                                    @items.Type  
+                                    </td>
+                                     <td>
+                                    @items.Owner  
+                                    </td>
+                                      <td>
+                                    @items.width  
+                                    </td>
+                                    <td>
+                                    <img src="/Images/@items.Images" width="60" height="60" class="rounded rounded-circle">  
+                                    </td>
+                                     <td>
+                                    @items.Desc  
+                                    </td>
+                                    <td>
+                                        @items.ConstractionDate
+                                    </td>
+                                    <td>
+                                        @foreach (var facility in items.Facility){
+                                              @facility
+                                        }
+                                    </td>
+
+                                    <td>
+                                        <a asp-action="DeleteStadium" asp-route-id="@items.Id">
+                                            <i class="fa fa-trash text-danger" aria-hidden="true"></i>
+                                        </a>
+                                    
+                                    </td>
+
+                                    <td>
+                                        <a asp-action="EditStadium" asp-route-id="@items.Id">
+                                            <i class="fa fa-pencil text-success" aria-hidden="true"></i>
+                                        </a>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                       
+
+                    </table>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+</div>

@@ -1,0 +1,82 @@
+@model IEnumerable<CategoriesTransportation>
+
+@{
+    
+    Layout="/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<div class="container">
+
+    <div class="row mt-5">
+
+        <div class="col">
+            <div class="card mt-5">
+                <div class="card-body">
+                    <form asp-action="CreateNewCategoriesTransportation" method="post"> 
+                        <div class="row">
+                            <div class="col">
+                                <label class="form-lable">اسم فئة النقل</label>
+                                <input type="text" name="Name" class="form-control">
+                            </div>
+
+                            <div class="row">
+                                <div class="col">
+                                    <button class="btn btn-hover color-1" type="submit">حفظ</button>
+                                </div>
+
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+ @* <div class="row mt-5">
+
+        <div class="col">
+
+            <div class="card">
+                <div class="card-body">
+                    <table class="table ">
+                        <thead>
+                            <tt>
+                                 <td class=text-center>رقم فئة النقل</td>
+
+                                <td class=text-center>اسم فئة النقل</td>
+                
+                            </tt>
+
+                        </thead>
+
+                        <tbody>
+                            @foreach (var items in Model) {
+                                <tr>
+                                    <td>
+                                    @items.Id 
+                                    </td>
+
+                                     <td>
+                                    @items.Name 
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                       
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div> *@
+
+     <div id="categoriescontainer">
+        @Html.Partial("_partial/_CategoriesTransportationpartial", Model)
+    </div>
+
+    
+</div>
